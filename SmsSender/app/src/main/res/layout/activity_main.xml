@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+    <TextView
+            android:text="Phone:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp" android:layout_marginStart="20dp" android:layout_marginTop="57dp"
+            android:id="@+id/textView" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            />
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="请输入电话号码"
+            android:ems="10"
+            android:id="@+id/phoneNumberEditText"
+            android:layout_alignBaseline="@+id/textView" android:layout_alignBottom="@+id/textView"
+            android:layout_toRightOf="@+id/textView2" android:layout_toEndOf="@+id/textView2"
+            android:layout_marginLeft="37dp" android:layout_marginStart="37dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:hint="请输入短信内容"
+            android:ems="10"
+            android:layout_marginTop="47dp" android:id="@+id/messgaeEditText"
+            android:layout_below="@+id/phoneNumberEditText" android:layout_alignLeft="@+id/phoneNumberEditText"
+            android:layout_alignStart="@+id/phoneNumberEditText"/>
+    <TextView
+            android:text="Content:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignBottom="@+id/messgaeEditText"
+            android:layout_alignLeft="@+id/textView" android:layout_alignStart="@+id/textView"
+            android:layout_marginBottom="11dp" android:id="@+id/textView2"/>
+    <Button
+            android:text="发送短信"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="11dp" android:layout_marginEnd="11dp" android:id="@+id/sendMsgBtn"
+            android:layout_below="@+id/messgaeEditText" android:layout_alignRight="@+id/messgaeEditText"
+            android:layout_alignEnd="@+id/messgaeEditText" android:layout_marginTop="36dp"/>
+</RelativeLayout>
