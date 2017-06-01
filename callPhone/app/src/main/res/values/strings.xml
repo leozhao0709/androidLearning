@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">打电话</string>
+    <string name="call_button_name">拨打</string>
+    <string name="phoneTextEditHint">请输入电话</string>
+</resources>
