@@ -1,18 +1,20 @@
 package com.example.lzhao.smssender;
 
-import android.support.v7.app.AppCompatActivity;
+import CommonActivity.PermissionsCallback;
+import android.Manifest;
+import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import CommonActivity.AppCompactPermissionActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompactPermissionActivity {
 
     private EditText messageEditText;
     private EditText phoneNumberEditText;
-    private Button sendMsgBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         messageEditText = (EditText) findViewById(R.id.messgaeEditText);
         phoneNumberEditText = (EditText) findViewById(R.id.phoneNumberEditText);
-        sendMsgBtn = (Button) findViewById(R.id.sendMsgBtn);
+        Button sendMsgBtn = (Button) findViewById(R.id.sendMsgBtn);
 
         sendMsgBtn.setOnClickListener(new MyClickListener());
     }
@@ -29,6 +31,23 @@ public class MainActivity extends AppCompatActivity {
     private class MyClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
+
+            MainActivity.this.getPermissions(new PermissionsCallback() {
+                @Override
+                public void grantPermissionsCallback(@NonNull String... permissions) {
+                    MainActivity.this.sendMsg();
+                }
+
+                @Override
+                public void deniedPermissionsCallback(@NonNull String... permissions) {
+                    Toast.makeText(MainActivity.this, "send sms permission need be granted!", Toast.LENGTH_SHORT).show();
+                }
+            }, Manifest.permission.SEND_SMS);
+
+        }
+    }
+
+    private void sendMsg() {
             String phoneNumber = phoneNumberEditText.getText().toString().trim();
             String messgae = MainActivity.this.messageEditText.getText().toString();
 
@@ -41,5 +60,4 @@ public class MainActivity extends AppCompatActivity {
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(phoneNumber, null, messgae, null, null);
         }
-    }
 }
