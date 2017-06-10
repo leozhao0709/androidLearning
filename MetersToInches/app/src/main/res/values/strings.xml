@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MetersToInches</string>
+    <string name="inches_value">%.2f inches</string>
+    <string name="error_message">Please input a valid number</string>
+</resources>
